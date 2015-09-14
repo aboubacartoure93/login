@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Awesome App</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+<body>
+	<header>
+		<% if @current_user %>
+			<span>Hello <%= current_user.name %></span>
+		<% end %>
+		
+		<nav>
+			<% if current_user %>
+				<a href="/">home</a>
+				<a href="/profile">profile</a>
+				<a href="/profile/edit">edit profile</a>
+				<a href="/logout">log out</a>
+				<a href="/tweet" align="left">tweet</a>
+			
+				
+			<% else %>
+				<a href="/signup">sign up</a>
+				<a href="/login">log in</a>
+				
+
+			<% end %>
+		</nav>
+		
+	</header>
+	<% if flash[:notice] %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+	<main>		
+		<%= yield %>	
+</body>
+</html>

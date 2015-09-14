@@ -1,0 +1,12 @@
+<h1>Listing Users</h1>
+<% @users.each do |user| %>
+	<p><a href="/users/<%= user.id %>"><%= user.full_name %></a> 
+	<% if current_user and current_user != user %>
+		<% if current_user and !current_user.following.include?(user) %>
+			(<a href="/follow/<%= user.id %>">follow</a>)
+		<% else %>
+			(<a href="/unfollow/<%= user.id %>">unfollow</a>)
+		<% end %>
+	<% end %>
+	</p>
+<% end %>
